@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Based on this template: https://github.com/jfversluis/MauiBlazorPlatformTabs -->
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:NashvilleNumberPractice"
@@ -7,7 +8,7 @@
     <Application.MainPage>
         <Shell>
             <TabBar>
-                <Tab Title="Home">
+                <Tab Title="Home" Icon="home.svg">
                     <ShellContent Title="Home">
                         <ShellContent.ContentTemplate>
                             <DataTemplate>
@@ -22,14 +23,29 @@
                         </ShellContent.ContentTemplate>
                     </ShellContent>
                 </Tab>
-                <Tab Title="Log">
-                    <ShellContent Title="Log">
+                <Tab Title="Learn" Icon="learn.svg">
+                    <ShellContent Title="Learn">
                         <ShellContent.ContentTemplate>
                             <DataTemplate>
                                 <ContentPage>
                                     <BlazorWebView HostPage="wwwroot/index.html">
                                         <BlazorWebView.RootComponents>
                                             <RootComponent Selector="#app" ComponentType="{x:Type pages:Counter}" />
+                                        </BlazorWebView.RootComponents>
+                                    </BlazorWebView>
+                                </ContentPage>
+                            </DataTemplate>
+                        </ShellContent.ContentTemplate>
+                    </ShellContent>
+                </Tab>
+                <Tab Title="Practice" Icon="quiz.svg">
+                    <ShellContent Title="Practice">
+                        <ShellContent.ContentTemplate>
+                            <DataTemplate>
+                                <ContentPage>
+                                    <BlazorWebView HostPage="wwwroot/index.html">
+                                        <BlazorWebView.RootComponents>
+                                            <RootComponent Selector="#app" ComponentType="{x:Type pages:FetchData}" />
                                         </BlazorWebView.RootComponents>
                                     </BlazorWebView>
                                 </ContentPage>
