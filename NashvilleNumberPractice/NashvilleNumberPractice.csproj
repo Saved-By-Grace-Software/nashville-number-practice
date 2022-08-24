@@ -54,6 +54,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Include="wwwroot\Images\howgreat.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="wwwroot\Images\howgreat.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <PackageReference Include="MudBlazor" Version="6.0.14" />
 	</ItemGroup>
 
