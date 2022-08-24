@@ -15,7 +15,7 @@
                                 <ContentPage>
                                     <BlazorWebView HostPage="wwwroot/index.html">
                                         <BlazorWebView.RootComponents>
-                                            <RootComponent Selector="#app" ComponentType="{x:Type pages:Index}" />
+                                            <RootComponent Selector="#app" ComponentType="{x:Type pages:Home}" />
                                         </BlazorWebView.RootComponents>
                                     </BlazorWebView>
                                 </ContentPage>
@@ -30,7 +30,7 @@
                                 <ContentPage>
                                     <BlazorWebView HostPage="wwwroot/index.html">
                                         <BlazorWebView.RootComponents>
-                                            <RootComponent Selector="#app" ComponentType="{x:Type pages:Counter}" />
+                                            <RootComponent Selector="#app" ComponentType="{x:Type pages:Learn}" />
                                         </BlazorWebView.RootComponents>
                                     </BlazorWebView>
                                 </ContentPage>
@@ -45,7 +45,7 @@
                                 <ContentPage>
                                     <BlazorWebView HostPage="wwwroot/index.html">
                                         <BlazorWebView.RootComponents>
-                                            <RootComponent Selector="#app" ComponentType="{x:Type pages:FetchData}" />
+                                            <RootComponent Selector="#app" ComponentType="{x:Type pages:Practice}" />
                                         </BlazorWebView.RootComponents>
                                     </BlazorWebView>
                                 </ContentPage>
