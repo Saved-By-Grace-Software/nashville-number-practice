@@ -8,6 +8,21 @@
     <Application.MainPage>
         <Shell>
             <TabBar>
+                <Tab Title="Practice" Icon="quiz.svg">
+                    <ShellContent Title="Practice">
+                        <ShellContent.ContentTemplate>
+                            <DataTemplate>
+                                <ContentPage>
+                                    <BlazorWebView HostPage="wwwroot/index.html">
+                                        <BlazorWebView.RootComponents>
+                                            <RootComponent Selector="#app" ComponentType="{x:Type pages:Practice}" />
+                                        </BlazorWebView.RootComponents>
+                                    </BlazorWebView>
+                                </ContentPage>
+                            </DataTemplate>
+                        </ShellContent.ContentTemplate>
+                    </ShellContent>
+                </Tab>
                 <Tab Title="Home" Icon="home.svg">
                     <ShellContent Title="Home">
                         <ShellContent.ContentTemplate>
@@ -38,28 +53,13 @@
                         </ShellContent.ContentTemplate>
                     </ShellContent>
                 </Tab>
-                <Tab Title="Practice" Icon="quiz.svg">
-                    <ShellContent Title="Practice">
-                        <ShellContent.ContentTemplate>
-                            <DataTemplate>
-                                <ContentPage>
-                                    <BlazorWebView HostPage="wwwroot/index.html">
-                                        <BlazorWebView.RootComponents>
-                                            <RootComponent Selector="#app" ComponentType="{x:Type pages:Practice}" />
-                                        </BlazorWebView.RootComponents>
-                                    </BlazorWebView>
-                                </ContentPage>
-                            </DataTemplate>
-                        </ShellContent.ContentTemplate>
-                    </ShellContent>
-                </Tab>
             </TabBar>
         </Shell>
     </Application.MainPage>
     <Application.Resources>
         <ResourceDictionary>
 
-            <Color x:Key="PageBackgroundColor">#512bdf</Color>
+            <Color x:Key="PageBackgroundColor">#ffffff</Color>
             <Color x:Key="PrimaryTextColor">White</Color>
 
             <Style TargetType="Label">
@@ -74,8 +74,13 @@
                 <Setter Property="Padding" Value="14,10" />
             </Style>
 
+            <Style TargetType="Shell">
+                <Setter Property="Shell.BackgroundColor" Value="DarkSlateGray" />
+                <Setter Property="Shell.ForegroundColor" Value="AntiqueWhite" />
+            </Style>
+
             <Style TargetType="TabBar">
-                <Setter Property="Shell.TabBarBackgroundColor" Value="CornflowerBlue" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="DarkSlateGray" />
                 <Setter Property="Shell.TabBarTitleColor" Value="Black" />
                 <Setter Property="Shell.TabBarUnselectedColor" Value="AntiqueWhite" />
             </Style>

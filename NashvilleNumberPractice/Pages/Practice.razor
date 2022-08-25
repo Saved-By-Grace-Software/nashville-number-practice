@@ -1,5 +1,58 @@
-﻿<MudText Typo="Typo.h1">Learn</MudText>
+﻿<MudThemeProvider Theme="CurrentTheme" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout Style="@($"height: 100%")">
+    <MudContainer class="pa-6">
+        <MudCard Elevation="2" Class="mb-4">
+            <MudCardContent>
+                <MudText Align="Align.Center"><strong>Choose a key to practice!</strong></MudText>
+                <MudDivider Class="mt-2 mb-2" />
+                <MudSelect T="string" Label="Key" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" FullWidth="true" Dense="true" @bind-Value="_selectedKey">
+                    <MudSelectItem T="string" Value="@("All Keys")" />
+                    @foreach (string key in NashvilleNumberData.NashvilleNumbers.Keys)
+                    {
+                        <MudSelectItem T="string" Value="@key" />
+                    }
+                </MudSelect>
+            </MudCardContent>
+        </MudCard>
+
+        @if (!string.IsNullOrWhiteSpace(_selectedKey))
+        {
+            <MudCard Elevation="2" Class="mt-4">
+                <MudCardContent>
+                    <MudText Align="Align.Center"><strong>What is the...?</strong></MudText>
+                    <MudDivider Class="mt-2 mb-2" />
+                    <MudStack Row="true" AlignItems="AlignItems.Center" Justify="Justify.SpaceEvenly">
+                        <MudText Typo="Typo.h3">@_questionNumber</MudText>
+                        <MudText Typo="Typo.h5">of</MudText>
+                        <MudText Typo="Typo.h3">@_questionKey</MudText>
+                    </MudStack>
+
+                </MudCardContent>
+            </MudCard>
+
+            <MudCard Elevation="2" Class="mt-4">
+                <MudCardContent>
+                    <MudText Align="Align.Center"><strong>@_answerTitle</strong></MudText>
+                    <MudDivider Class="mt-2 mb-2" />
+                    <MudPaper Class="pa-6 ma-2 mud-theme-dark" Outlined="true">
+                        <MudText Typo="Typo.h1" Align="Align.Center">@_answerDisplay</MudText>
+                    </MudPaper>
+                </MudCardContent>
+            </MudCard>
+        }
+
+    </MudContainer>
+</MudLayout>
 
 @code {
+    MudTheme CurrentTheme = new MudTheme();
 
+    private string _selectedKey { get; set; }
+    private string _answerDisplay = "...";
+    private string _answerTitle = "Tap to show the answer!";
+    private string _questionNumber = "2";
+    private string _questionKey = "C";
 }
