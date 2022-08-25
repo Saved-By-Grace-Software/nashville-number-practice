@@ -8,7 +8,7 @@
             <MudCardContent>
                 <MudText Align="Align.Center"><strong>Choose a key to practice!</strong></MudText>
                 <MudDivider Class="mt-2 mb-2" />
-                <MudSelect T="string" Label="Key" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" FullWidth="true" Dense="true" @bind-Value="_selectedKey">
+                <MudSelect T="string" Label="Key" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" FullWidth="true" Dense="true" Value="_selectedKey" ValueChanged="ChangeSelectedKey">
                     <MudSelectItem T="string" Value="@("All Keys")" />
                     @foreach (string key in NashvilleNumberData.NashvilleNumbers.Keys)
                     {
@@ -50,9 +50,33 @@
 @code {
     MudTheme CurrentTheme = new MudTheme();
 
+    private Random _randObj = new Random();
     private string _selectedKey { get; set; }
     private string _answerDisplay = "...";
     private string _answerTitle = "Tap to show the answer!";
-    private string _questionNumber = "2";
-    private string _questionKey = "C";
+    private string _questionNumber = "#";
+    private string _questionKey = "?";
+
+    private void ChangeSelectedKey(string newValue)
+    {
+        // Set the selected key for the select
+        _selectedKey = newValue;
+        string[] chords = NashvilleNumberData.NashvilleNumbers[_selectedKey];
+
+        // Check for All Keys as the selection
+        if (newValue == "All Keys")
+        {
+
+        }
+        else
+        {
+            // Testing a specific key, set the question key
+            _questionKey = newValue;
+
+            // Randomly select the number to test
+            int testNum = _randObj.Next(1, 6);
+            _questionNumber = testNum.ToString();
+            _answerDisplay = chords[testNum - 1];
+        }
+    }
 }
