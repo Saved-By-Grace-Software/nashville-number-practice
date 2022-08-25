@@ -1,5 +1,34 @@
-﻿<MudText Typo="Typo.h1">Learn</MudText>
+﻿<MudThemeProvider Theme="CurrentTheme" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout Style="@($"height: 100%")">
+    <MudContainer class="pa-6">
+        <MudCard Elevation="2" Class="mb-4">
+            <MudCardContent>
+                <MudText Align="Align.Center"><strong>Choose a key to learn!</strong></MudText>
+                <MudDivider Class="mt-2 mb-2" />
+                <MudSelect T="string" Label="Key" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" FullWidth="true" @bind-Value="_selectedKey">
+                    @foreach (string key in NashvilleNumberData.NashvilleNumbers.Keys)
+                    {
+                        <MudSelectItem T="string" Value="@key" />
+                    }
+                </MudSelect>
+            </MudCardContent>
+        </MudCard>
+
+        <MudCard Elevation="2" Class="mt-4">
+            <MudCardContent>
+                <MudText Align="Align.Center"><strong>Here are the corresponding chords</strong></MudText>
+                <MudDivider Class="mt-2 mb-2" />
+                <MudText>Selected: @_selectedKey</MudText>
+            </MudCardContent>
+        </MudCard>
+    </MudContainer>
+</MudLayout>
 
 @code {
+    MudTheme CurrentTheme = new MudTheme();
 
+    private string _selectedKey { get; set; }
 }

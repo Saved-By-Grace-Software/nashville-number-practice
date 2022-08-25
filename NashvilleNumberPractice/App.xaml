@@ -8,21 +8,6 @@
     <Application.MainPage>
         <Shell>
             <TabBar>
-                <Tab Title="Home" Icon="home.svg">
-                    <ShellContent Title="Home">
-                        <ShellContent.ContentTemplate>
-                            <DataTemplate>
-                                <ContentPage>
-                                    <BlazorWebView HostPage="wwwroot/index.html">
-                                        <BlazorWebView.RootComponents>
-                                            <RootComponent Selector="#app" ComponentType="{x:Type pages:Home}" />
-                                        </BlazorWebView.RootComponents>
-                                    </BlazorWebView>
-                                </ContentPage>
-                            </DataTemplate>
-                        </ShellContent.ContentTemplate>
-                    </ShellContent>
-                </Tab>
                 <Tab Title="Learn" Icon="learn.svg">
                     <ShellContent Title="Learn">
                         <ShellContent.ContentTemplate>
@@ -38,6 +23,22 @@
                         </ShellContent.ContentTemplate>
                     </ShellContent>
                 </Tab>
+                <Tab Title="Home" Icon="home.svg">
+                    <ShellContent Title="Home">
+                        <ShellContent.ContentTemplate>
+                            <DataTemplate>
+                                <ContentPage>
+                                    <BlazorWebView HostPage="wwwroot/index.html">
+                                        <BlazorWebView.RootComponents>
+                                            <RootComponent Selector="#app" ComponentType="{x:Type pages:Home}" />
+                                        </BlazorWebView.RootComponents>
+                                    </BlazorWebView>
+                                </ContentPage>
+                            </DataTemplate>
+                        </ShellContent.ContentTemplate>
+                    </ShellContent>
+                </Tab>
+                
                 <Tab Title="Practice" Icon="quiz.svg">
                     <ShellContent Title="Practice">
                         <ShellContent.ContentTemplate>
@@ -72,6 +73,12 @@
                 <Setter Property="FontFamily" Value="OpenSansRegular" />
                 <Setter Property="BackgroundColor" Value="#2b0b98" />
                 <Setter Property="Padding" Value="14,10" />
+            </Style>
+
+            <Style TargetType="TabBar">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="CornflowerBlue" />
+                <Setter Property="Shell.TabBarTitleColor" Value="Black" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="AntiqueWhite" />
             </Style>
 
         </ResourceDictionary>
