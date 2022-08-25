@@ -21,7 +21,25 @@
             <MudCardContent>
                 <MudText Align="Align.Center"><strong>Here are the corresponding chords</strong></MudText>
                 <MudDivider Class="mt-2 mb-2" />
-                <MudText>Selected: @_selectedKey</MudText>
+                    @if (!string.IsNullOrWhiteSpace(_selectedKey))
+                    {
+                        string[] chords = NashvilleNumberData.NashvilleNumbers[_selectedKey];
+
+                        <MudCarousel Class="mud-width-full" Style="height:300px;" ShowArrows="true" ShowBullets="false" AutoCycle="false" TData="object">
+                            @for (int i = 0; i < 6; i++)
+                            {
+                                int dispNum = i + 1;
+                                string chord = chords[i];
+                                <MudCarouselItem Transition="Transition.Slide" Color="@Color.Info" Class="d-flex align-content-center justify-center flex-wrap flex-grow-1 gap-4">
+                                    <MudStack>
+                                    <MudText Typo="Typo.h1" Align="Align.Center">@dispNum</MudText>
+                                        <MudSpacer />
+                                    <MudText Typo="Typo.h1">@chord</MudText>
+                                    </MudStack>
+                                </MudCarouselItem>
+                            }
+                        </MudCarousel>
+                    }
             </MudCardContent>
         </MudCard>
     </MudContainer>

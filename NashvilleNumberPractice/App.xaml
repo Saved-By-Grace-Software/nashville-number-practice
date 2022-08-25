@@ -8,21 +8,6 @@
     <Application.MainPage>
         <Shell>
             <TabBar>
-                <Tab Title="Learn" Icon="learn.svg">
-                    <ShellContent Title="Learn">
-                        <ShellContent.ContentTemplate>
-                            <DataTemplate>
-                                <ContentPage>
-                                    <BlazorWebView HostPage="wwwroot/index.html">
-                                        <BlazorWebView.RootComponents>
-                                            <RootComponent Selector="#app" ComponentType="{x:Type pages:Learn}" />
-                                        </BlazorWebView.RootComponents>
-                                    </BlazorWebView>
-                                </ContentPage>
-                            </DataTemplate>
-                        </ShellContent.ContentTemplate>
-                    </ShellContent>
-                </Tab>
                 <Tab Title="Home" Icon="home.svg">
                     <ShellContent Title="Home">
                         <ShellContent.ContentTemplate>
@@ -38,7 +23,21 @@
                         </ShellContent.ContentTemplate>
                     </ShellContent>
                 </Tab>
-                
+                <Tab Title="Learn" Icon="learn.svg">
+                    <ShellContent Title="Learn">
+                        <ShellContent.ContentTemplate>
+                            <DataTemplate>
+                                <ContentPage>
+                                    <BlazorWebView HostPage="wwwroot/index.html">
+                                        <BlazorWebView.RootComponents>
+                                            <RootComponent Selector="#app" ComponentType="{x:Type pages:Learn}" />
+                                        </BlazorWebView.RootComponents>
+                                    </BlazorWebView>
+                                </ContentPage>
+                            </DataTemplate>
+                        </ShellContent.ContentTemplate>
+                    </ShellContent>
+                </Tab>
                 <Tab Title="Practice" Icon="quiz.svg">
                     <ShellContent Title="Practice">
                         <ShellContent.ContentTemplate>
