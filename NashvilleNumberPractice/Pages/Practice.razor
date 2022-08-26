@@ -37,7 +37,7 @@
                 <MudCardContent>
                     <MudText Align="Align.Center"><strong>@_answerTitle</strong></MudText>
                     <MudDivider Class="mt-2 mb-2" />
-                    <MudPaper Class="pa-6 ma-2 mud-theme-dark" Outlined="true">
+                    <MudPaper Class="pa-6 ma-2 mud-theme-dark" Outlined="true" onclick="@(() => AnswerPadClicked())">
                         <MudText Typo="Typo.h1" Align="Align.Center">@_answerDisplay</MudText>
                     </MudPaper>
                 </MudCardContent>
@@ -50,33 +50,71 @@
 @code {
     MudTheme CurrentTheme = new MudTheme();
 
+    private static readonly string HIDDEN_TEXT = "...";
+    private static readonly string SHOW_ANSWER = "Tap to show the answer!";
+    private static readonly string NEW_QUESTION = "Tap for another test!";
+
     private Random _randObj = new Random();
     private string _selectedKey { get; set; }
-    private string _answerDisplay = "...";
-    private string _answerTitle = "Tap to show the answer!";
+    private string _answerDisplay = HIDDEN_TEXT;
+    private string _answerTitle = SHOW_ANSWER;
     private string _questionNumber = "#";
+    private int _questionNumberValue = 0;
     private string _questionKey = "?";
 
+    // Event handler for a change in selection of the select
     private void ChangeSelectedKey(string newValue)
     {
         // Set the selected key for the select
         _selectedKey = newValue;
-        string[] chords = NashvilleNumberData.NashvilleNumbers[_selectedKey];
 
-        // Check for All Keys as the selection
-        if (newValue == "All Keys")
+        // Randomize the question
+        RandomizeQuestion();
+    }
+
+    // Event handler for clicking the answer pad
+    private void AnswerPadClicked()
+    {
+        // Check if the answer is hidden
+        if (_answerDisplay == HIDDEN_TEXT)
         {
-
+            // Answer is hidden, show the answer
+            string[] chords = NashvilleNumberData.NashvilleNumbers[_questionKey];
+            _answerDisplay = chords[_questionNumberValue - 1];
+            _answerTitle = NEW_QUESTION;
         }
         else
         {
-            // Testing a specific key, set the question key
-            _questionKey = newValue;
-
-            // Randomly select the number to test
-            int testNum = _randObj.Next(1, 6);
-            _questionNumber = testNum.ToString();
-            _answerDisplay = chords[testNum - 1];
+            // Answer is shown, choose a new question
+            RandomizeQuestion();
         }
+    }
+
+    // Randomizes the question for the specified key and hides the answer
+    private void RandomizeQuestion()
+    {
+        string key;
+
+        // Check for All Keys as the selection
+        if (_selectedKey == "All Keys")
+        {
+            // Testing all keys, choose a random key
+            int randomIndex = _randObj.Next(0, NashvilleNumberData.NashvilleNumbers.Count);
+            key = NashvilleNumberData.NashvilleNumbers.ElementAt(randomIndex).Key;
+        }
+        else
+        {
+            // Testing a specific key, choose a random question in that key
+            key = _selectedKey;
+        }
+
+        // Set the question key
+        _questionKey = key;
+
+        // Randomly select the number to test
+        _questionNumberValue = _randObj.Next(1, 6);
+        _questionNumber = _questionNumberValue.ToString();
+        _answerTitle = SHOW_ANSWER;
+        _answerDisplay = HIDDEN_TEXT;
     }
 }
