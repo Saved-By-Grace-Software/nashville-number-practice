@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
@@ -20,7 +20,7 @@
 		<ApplicationIdGuid>C191B995-100F-48E8-BF6B-6A83CADB493E</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationDisplayVersion>1.1</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
