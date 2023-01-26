@@ -26,7 +26,7 @@
                         string[] chords = NashvilleNumberData.NashvilleNumbers[_selectedKey];
 
                         <MudCarousel Class="mud-width-full" Style="height:300px;" ShowArrows="true" ShowBullets="false" AutoCycle="false" TData="object">
-                            @for (int i = 0; i < 6; i++)
+                            @for (int i = 0; i < NashvilleNumberData.NUM_CHORDS_IN_KEY; i++)
                             {
                                 int dispNum = i + 1;
                                 string chord = chords[i];

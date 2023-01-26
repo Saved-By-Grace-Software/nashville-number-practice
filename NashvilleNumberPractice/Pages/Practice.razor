@@ -113,7 +113,7 @@
         _questionKey = key;
 
         // Randomly select the number to test
-        _questionNumberValue = _randObj.Next(1, 7);
+        _questionNumberValue = _randObj.Next(1, NashvilleNumberData.NUM_CHORDS_IN_KEY + 1);
         _questionNumber = _questionNumberValue.ToString();
         _answerTitle = SHOW_ANSWER;
         _answerDisplay = HIDDEN_TEXT;
